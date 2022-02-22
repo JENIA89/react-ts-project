@@ -10,15 +10,18 @@ interface Cardprops {
     height?: string;
     children?: React.ReactChild | React.ReactNode;
     variant: CardVariant;
+    onClick: ()=> void;
 }
 
-const Card: FC<Cardprops> = ({width, height, variant, children}) => {
+const Card: FC<Cardprops> = ({width, height, variant, children, onClick}) => {
   return (
     <div style={{width,
       height,
       border: variant === CardVariant.outlined ? '2px solid #000' : 'none',
-      background: variant == CardVariant.primary ? 'lightgray' : ''}}>
-      {children}
+      background: variant === CardVariant.primary ? 'lightgray' : ''}}
+      onClick={onClick}
+      >
+        {children}
     </div>
   )
 }
